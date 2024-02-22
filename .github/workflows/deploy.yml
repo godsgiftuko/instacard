@@ -1,45 +1,17 @@
-name: Deploy to Vercel
-
+name: Deploy Instacard to Vercel
 on:
   push:
     branches:
       - main
-
 jobs:
-  build_and_deploy:
+  deploy:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v3
-       with:
-         fetch-depth: 0 # Fetch all history commits (optional)
-
-    - name: Use Node.js v16 or higher
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' # Choose the desired version of Node.js
-
-    - run: npm ci --silent
-
-    - run: npm run build
-
-    - name: Upload artifact
-      uses: actions/upload-artifact@v3
-      if: ${{ steps.build_react_app.outputs.success }}
-      with:
-        name: dist
-        path: ./build
-
-    - name: Deploy to Vercel
-      id: deploy_vercel
-      uses: vercel/gh-actions@master
-      env:
-        VERCEL_GIT_COMMIT_MESSAGE: "${{ github.event.head_commit.message }}"
-        VERCEL_GITHUB_TOKEN: ${{ secrets.VERCEL_GITHUB_TOKEN }}
-      with:
-        directory: .
-        command: 'deploy'
-        skip-cache: true
-
-    - name: Log deployment status
-      run: echo "Deployment result: $(vercel --status)"
+      - uses: actions/checkout@v2
+      - name: Deploy to Vercel
+        uses: betahuhn/deploy-to-vercel-action@v1.9.12
+        with:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
