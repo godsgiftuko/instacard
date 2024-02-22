@@ -1,8 +1,8 @@
-import { Stage, Sprite, Text } from '@pixi/react';
+import { Stage, Text } from '@pixi/react';
 import * as PIXI from 'pixi.js';
 import { ICanvas } from '../interfaces/canvas';
 
-const wizard = 'https://pixijs.com/images/logo.svg';
+// const wizard = 'https://pixijs.com/images/logo.svg';
 
 const Canvas: React.FC<ICanvas>  = () => {
   // Define the text style
