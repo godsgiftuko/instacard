@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.bg-blue-100 {
+    background-color: #4e2cb8;
+}
+
+.hover-bg-blue-100:hover {
+    background-color: #421daf;
+}

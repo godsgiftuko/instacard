@@ -1,6 +1,6 @@
 import Canvas from "../app/components/canvas";
 
-export default function Demo() {
+export default function Card() {
     
     return <Canvas />
 }

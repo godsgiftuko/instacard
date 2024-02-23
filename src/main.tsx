@@ -6,7 +6,7 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from './pages/Home.tsx';
 import NotFound from './pages/404.tsx';
-import Demo from './pages/Demo.tsx';
+import Card from './pages/Card.tsx';
 
 // -- Router
 const router = createBrowserRouter([
@@ -21,8 +21,8 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: "/demo",
-    element: <Demo />,
+    path: "/cards",
+    element: <Card />,
   },
   {
     path: "*",
